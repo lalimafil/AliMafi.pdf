@@ -9,9 +9,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.cv.rule=Host(`cv.alimafi.ir`)
-      - traefik.http.routers.cv.entrypoints=websecure
-      - traefik.http.routers.cv.tls=true
-      - traefik.http.routers.cv.tls.certresolver=letsencrypt
+      - traefik.http.routers.cv.entrypoints=web
+      - traefik.http.routers.cv.tls=false
+      #- traefik.http.routers.cv.tls.certresolver=letsencrypt
       - traefik.http.routers.cv.priority=1
       - traefik.http.services.cv.loadbalancer.server.port=80
 
