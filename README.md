@@ -4,7 +4,7 @@ Welcome to my CV repository! Here you'll find my latest resume in PDF format, bu
 
 ## 📥 Pre-Built Versions
 
-Download the latest PDF versions from the [GitHub Releases](https://github.com/SinaAboutalebi/SinaAboutalebi.pdf/releases) page.
+Download the latest PDF versions from the [GitHub Releases](https://github.com/lalimafil/AliMafi.pdf/releases) page.
 
 ## 🔨 Build Instructions
 
