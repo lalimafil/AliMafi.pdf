@@ -23,7 +23,7 @@ jobs:
         run: |
           mkdir -p build
           tectonic -X build
-          mv AliMafi.pdf build/
+          mv *.pdf build/
 
       - name: ✨ Create Release
         uses: softprops/action-gh-release@v1
