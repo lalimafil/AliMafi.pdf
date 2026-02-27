@@ -3,7 +3,7 @@ name: 📄✨ Release CV
 on:
   push:
     tags:
-      - 'v*'       # هر tag که با v شروع بشه
+      - 'v*'
   workflow_dispatch:
 
 jobs:
