@@ -21,14 +21,12 @@ jobs:
 
       - name: 🏗️ Build Resume in LaTeX
         run: |
-          mkdir -p build
           tectonic -X build
-          mv *.pdf build/
 
       - name: ✨ Create Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: build/AliMafi.pdf
+          files: build/AliMafi/AliMafi.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
