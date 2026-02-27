@@ -1,7 +1,7 @@
 services:
   alimafi-cv:
     container_name: alimafi-cv
-    image: alimafi-cv:latest
+    build: .
     expose:
       - 80
     networks:
