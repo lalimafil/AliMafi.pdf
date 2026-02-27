@@ -3,7 +3,6 @@ name: 📄✨ Release CV
 on:
   push:
 
-  workflow_dispatch:
 
 jobs:
   build_latex:
