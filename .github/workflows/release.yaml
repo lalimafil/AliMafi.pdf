@@ -22,7 +22,7 @@ jobs:
       - name: 🏗️ Build Resume in LaTeX
         run: |
           mkdir -p build
-          tectonic -X build AliMafi.pdf
+          tectonic -X build
           mv AliMafi.pdf build/
 
       - name: ✨ Create Release
