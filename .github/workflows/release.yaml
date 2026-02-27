@@ -2,7 +2,8 @@ name: 📄✨ Release CV
 
 on:
   push:
-
+    tags:
+      - 'v*'
 
 jobs:
   build_latex:
