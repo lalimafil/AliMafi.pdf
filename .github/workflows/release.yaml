@@ -45,18 +45,27 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Sync project to server
+      - name: 🚀 Set Up Tectonic
+        uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏗️ Build Resume in LaTeX
         run: |
-          rsync -avz --delete -e "ssh -p ${{ secrets.DEPLOY_PORT }} -i ~/.ssh/id_rsa" \
-            --exclude '.git' \
-            ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}
+          tectonic -X build
+
+      - name: Send PDF file to server
+        run: |
+          scp -P ${{ secrets.DEPLOY_PORT }} \
+            ./build/AliMafi/AliMafi.pdf ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}/html/
 
       - name: Run deploy commands on server
         run: |
           ssh -i ~/.ssh/id_rsa -p ${{ secrets.DEPLOY_PORT }} \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} <<'EOF'
               cd ${{ secrets.REMOTE_PATH }}
+              docker compose pull
               docker compose down
-              docker compose up -d --build
+              docker compose up -d
               docker image prune -f
           EOF

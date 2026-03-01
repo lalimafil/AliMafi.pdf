@@ -1,7 +1,7 @@
 services:
   alimafi-cv:
+    image: hub.atlantiscloud.ir/nginx:alpine
     container_name: alimafi-cv
-    build: .
     expose:
       - 80
     networks:
