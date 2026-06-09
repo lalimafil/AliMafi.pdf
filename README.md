@@ -1,17 +1,25 @@
 ## 🚀 Overview
 
-Welcome to my CV repository! Here you'll find my latest resume in PDF format, built with LaTeX for a professional look.
+Welcome to my CV repository!  
+The latest version of my resume is always available online.
 
-## 📥 Pre-Built Versions
+🌐 View CV here: **https://cv.alimafi.ir**
 
-Download the latest PDF versions from the [GitHub Releases](https://github.com/lalimafil/AliMafi.pdf/releases) page.
+## 📄 Download PDF
 
-## 🔨 Build Instructions
+You can directly view or download the latest PDF version from the website above.
 
-To build the PDF yourself, you’ll need [Tectonic](https://tectonic-typesetting.github.io/book/latest/index.html). Run the following command:
+## 🔨 Build Locally (Optional)
+
+If you want to build the CV yourself, you can use [Tectonic](https://tectonic-typesetting.github.io/book/latest/index.html):
 
 ```sh
 tectonic -X build
 ```
+This will generate the PDF locally using LaTeX.
 
-Feel free to explore, and let me know if you have any questions or feedback!
+## 💡 Notes
+
+- This repository is automatically deployed via GitHub Actions
+- Any new tag (v*) triggers a fresh build and update on the website
+- No manual release process is required anymore
