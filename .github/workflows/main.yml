@@ -1,0 +1,70 @@
+name: 📄 Deploy Resume to GitHub Pages
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Tectonic
+        uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build PDF
+        run: tectonic -X build
+
+      - name: Prepare Pages Artifact
+        run: |
+          mkdir public
+
+          cp build/AliMafi/AliMafi.pdf public/
+
+          cat > public/index.html << 'EOF'
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Ali Mafi Resume</title>
+              <meta http-equiv="refresh" content="0; url=AliMafi.pdf">
+            </head>
+            <body>
+              <a href="AliMafi.pdf">Download Resume</a>
+            </body>
+            </html>
+           EOF
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
