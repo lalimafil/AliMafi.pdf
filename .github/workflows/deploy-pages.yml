@@ -34,6 +34,7 @@ jobs:
         uses: wtfjoke/setup-tectonic@v4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          tectonic-version: "0.15.0"
 
       - name: 🏗️ Build PDF
         run: |
