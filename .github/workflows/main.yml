@@ -23,14 +23,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install TeX Live (XeLaTeX)
+      - name: Install minimal TeX deps
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            texlive-xetex \
-            texlive-fonts-recommended \
-            texlive-latex-extra \
-            latexmk
+          texlive-xetex \
+          texlive-latex-extra \
+          texlive-fonts-recommended \
+          latexmk \
+          texlive-fonts-fontawesome
 
       - name: Build PDF with XeLaTeX
         run: |
