@@ -30,8 +30,7 @@ jobs:
           texlive-xetex \
           texlive-latex-extra \
           texlive-fonts-recommended \
-          latexmk \
-          texlive-fonts-fontawesome
+          latexmk
 
       - name: Build PDF with XeLaTeX
         run: |
